@@ -1,0 +1,234 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+
+    background:
+        radial-gradient(
+            ellipse 70% 55% at 50% 100%,
+            rgba(37, 99, 235, 0.30) 0%,
+            rgba(30, 64, 175, 0.12) 45%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 50% 45% at 100% 0%,
+            rgba(56, 189, 248, 0.10) 0%,
+            transparent 100%
+        ),
+        linear-gradient(
+            180deg,
+            #080e1b 0%,
+            #0d1729 50%,
+            #111e35 100%
+        );
+
+    background-attachment: fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: #eff6ff;
+}
+
+
+.label-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: rgba(8, 14, 27, 0.75);
+    border-bottom: 1px solid rgba(147, 197, 253, 0.18);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    padding: 10px 15px;
+    z-index: 1000;
+}
+
+.lumen-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #eff6ff;
+}
+
+.logo {
+    height: 35px;
+    width: 35px;
+    object-fit: contain;
+}
+
+.features {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+    color: #eff6ff;
+
+    position: absolute;
+    right: 30px;
+}
+
+
+.header-lumen {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #eff6ff;
+
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.lumen-opisanie {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #afb0b1;
+
+    line-height: 1.6;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.git-button {
+    display: inline-block;
+    padding: 12px 24px;
+
+    background: #2563eb;
+    color: #eff6ff;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+
+    border: 1px solid rgba(147, 197, 253, 0.3);
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: absolute;
+    top: 65%;
+    left: 36%;
+}
+
+.get-started {
+    display: inline-block;
+    padding: 12px 28px;
+
+    background: #eff6ff;
+    color: #172554;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: absolute;
+    top: 65%;
+    left: 52%;
+}
+
+.get-started:hover {
+    background: #bfdbfe;
+    border-color: #93c5fd;
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+    transform: translateY(-2px);
+}
+
+.get-started:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+.git-button:hover {
+    background: #3b82f6;
+    border-color: #93c5fd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+}
+
+.git-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 5%;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: #888;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
+
