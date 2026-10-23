@@ -30,6 +30,14 @@
            rel="noopener noreferrer">
             GitHub ↗
         </a>
+
+        <div class="wiki-header-actions">
+         <select id="language-switcher" class="language-switcher"
+            aria-label="Select language">
+             <option value="en">EN</option>
+            <option value="ru">RU</option>
+            </select>
+        </div>
     </header>
 
     <div class="wiki-layout">
@@ -176,361 +184,716 @@
 
     </div>
 
-    <script>
-        const pages = {
-            introduction: {
-                title: "Introduction",
-                html: `
-                    <span class="wiki-eyebrow">LUMEN DOCUMENTATION</span>
-                    <h1>Welcome to Lumen.</h1>
-                    <p class="wiki-lead">Your apps. Your workflow. Your space.</p>
-                    <p><strong>Lumen</strong> is an application launcher and usage tracker for Linux, written in C++. Its goal is to combine a fast, customizable launcher with application usage tracking, session statistics and a modern graphical interface.</p>
-                    <div class="wiki-callout">
-                        <span class="callout-icon">⚠</span>
-                        <div>
-                            <strong>Early stage of development</strong>
-                            <p>Lumen currently includes a CLI prototype, a graphical interface and application usage tracking. Some planned features are not implemented yet.</p>
-                        </div>
-                    </div>
-                    <h2>Explore Lumen</h2>
-                    <div class="wiki-cards">
-                        <button class="wiki-card" data-page="installation">
-                            <span class="wiki-card-icon">↓</span>
-                            <strong>Installation</strong>
-                            <span>Install Lumen with the Bash installer.</span>
-                            <span class="wiki-card-link">Read guide →</span>
-                        </button>
-                        <button class="wiki-card" data-page="configuration">
-                            <span class="wiki-card-icon">⚙</span>
-                            <strong>Configuration</strong>
-                            <span>Find configuration files and customize the interface.</span>
-                            <span class="wiki-card-link">Read guide →</span>
-                        </button>
-                        <button class="wiki-card" data-page="features">
-                            <span class="wiki-card-icon">✧</span>
-                            <strong>Features</strong>
-                            <span>See what is implemented and what is planned.</span>
-                            <span class="wiki-card-link">Explore features →</span>
-                        </button>
-                        <button class="wiki-card" data-page="troubleshooting">
-                            <span class="wiki-card-icon">⌘</span>
-                            <strong>Troubleshooting</strong>
-                            <span>Get help with installation and CLI commands.</span>
-                            <span class="wiki-card-link">Get help →</span>
-                        </button>
-                    </div>
-                    <h2>Why Lumen?</h2>
-                    <p>Lumen started as a small C++ project for learning Linux internals, application management and desktop environment integration. The long-term goal is to grow from a simple launcher into a fully featured desktop activity panel.</p>
-                    <div class="wiki-tags"><span>C++</span><span>GTKmm</span><span>Linux</span><span>Open Source</span></div>
-                `
-            },
+<script>
+const pages = {
+    introduction: {
+        title: "Introduction",
+        ruTitle: "Введение",
+        html: `
+            <span class="wiki-eyebrow">LUMEN DOCUMENTATION</span>
+            <h1>Welcome to Lumen.</h1>
+            <p class="wiki-lead">Your apps. Your workflow. Your space.</p>
+            <p><strong>Lumen</strong> is an application launcher and usage tracker for Linux, written in C++. Its goal is to combine a fast, customizable launcher with application usage tracking, session statistics and a modern graphical interface.</p>
+            <div class="wiki-callout"><span class="callout-icon">⚠</span><div>
+                <strong>Early stage of development</strong>
+                <p>Lumen currently includes a CLI prototype, a graphical interface and application usage tracking. Some planned features are not implemented yet.</p>
+            </div></div>
+            <h2>Explore Lumen</h2>
+            <div class="wiki-cards">
+                <button class="wiki-card" data-page="installation"><span class="wiki-card-icon">↓</span><strong>Installation</strong><span>Install Lumen with the Bash installer.</span><span class="wiki-card-link">Read guide →</span></button>
+                <button class="wiki-card" data-page="configuration"><span class="wiki-card-icon">⚙</span><strong>Configuration</strong><span>Find configuration files and customize the interface.</span><span class="wiki-card-link">Read guide →</span></button>
+                <button class="wiki-card" data-page="features"><span class="wiki-card-icon">✧</span><strong>Features</strong><span>See what is implemented and what is planned.</span><span class="wiki-card-link">Explore features →</span></button>
+                <button class="wiki-card" data-page="troubleshooting"><span class="wiki-card-icon">⌘</span><strong>Troubleshooting</strong><span>Get help with installation and CLI commands.</span><span class="wiki-card-link">Get help →</span></button>
+            </div>
+            <h2>Why Lumen?</h2>
+            <p>Lumen started as a small C++ project for learning Linux internals, application management and desktop environment integration. The long-term goal is to grow from a simple launcher into a fully featured desktop activity panel.</p>
+            <div class="wiki-tags"><span>C++</span><span>GTKmm</span><span>Linux</span><span>Open Source</span></div>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">ДОКУМЕНТАЦИЯ LUMEN</span>
+            <h1>Добро пожаловать в Lumen.</h1>
+            <p class="wiki-lead">Твои приложения. Твой процесс. Твоё пространство.</p>
+            <p><strong>Lumen</strong> — лаунчер приложений и трекер времени их использования для Linux, написанный на C++. Его цель — объединить быстрый настраиваемый лаунчер, отслеживание использования приложений, статистику сеансов и современный графический интерфейс.</p>
+            <div class="wiki-callout"><span class="callout-icon">⚠</span><div>
+                <strong>Ранняя стадия разработки</strong>
+                <p>Сейчас Lumen включает прототип CLI, графический интерфейс и отслеживание времени использования приложений. Некоторые запланированные функции ещё не реализованы.</p>
+            </div></div>
+            <h2>Изучить Lumen</h2>
+            <div class="wiki-cards">
+                <button class="wiki-card" data-page="installation"><span class="wiki-card-icon">↓</span><strong>Установка</strong><span>Установи Lumen с помощью Bash-скрипта.</span><span class="wiki-card-link">Читать руководство →</span></button>
+                <button class="wiki-card" data-page="configuration"><span class="wiki-card-icon">⚙</span><strong>Настройки</strong><span>Найди конфигурационные файлы и настрой интерфейс.</span><span class="wiki-card-link">Читать руководство →</span></button>
+                <button class="wiki-card" data-page="features"><span class="wiki-card-icon">✧</span><strong>Возможности</strong><span>Посмотри, что уже реализовано и что планируется.</span><span class="wiki-card-link">Все возможности →</span></button>
+                <button class="wiki-card" data-page="troubleshooting"><span class="wiki-card-icon">⌘</span><strong>Решение проблем</strong><span>Помощь с установкой и командами CLI.</span><span class="wiki-card-link">Получить помощь →</span></button>
+            </div>
+            <h2>Почему Lumen?</h2>
+            <p>Lumen начинался как небольшой проект на C++ для изучения внутреннего устройства Linux, управления приложениями и интеграции с рабочим столом. В будущем проект должен вырасти из простого лаунчера в полноценную панель активности рабочего стола.</p>
+            <div class="wiki-tags"><span>C++</span><span>GTKmm</span><span>Linux</span><span>Открытый код</span></div>
+        `
+    },
 
-            overview: {
-                title: "Overview",
-                html: `
-                    <span class="wiki-eyebrow">GETTING STARTED</span>
-                    <h1>Overview</h1>
-                    <p class="wiki-lead">A launcher that can grow into a desktop activity panel.</p>
-                    <p>Lumen is a Linux application launcher and usage tracker written in C++. It discovers desktop applications, displays their names and icons, supports searching, and can launch applications.</p>
-                    <h2>Implemented</h2>
-                    <ul>
-                        <li>Discovering Linux <code>.desktop</code> files.</li>
-                        <li>Reading application names, executable commands (<code>Exec=</code>) and icons (<code>Icon=</code>).</li>
-                        <li>Keeping discovered applications in memory and displaying them.</li>
-                        <li>Searching applications by name and organizing them into categories.</li>
-                        <li>Graphical interface with application icons.</li>
-                        <li>Application usage time tracking.</li>
-                        <li>CLI commands for listing, searching and opening applications.</li>
-                    </ul>
-                    <h2>Technology and learning goals</h2>
-                    <p>The project is written in C++ and uses GTKmm for its graphical interface. It is also a practical way to learn Linux filesystem APIs, process management, the <code>.desktop</code> specification, inter-process communication (IPC) and databases.</p>
-                `
-            },
+    overview: {
+        title: "Overview",
+        ruTitle: "Обзор",
+        html: `
+            <span class="wiki-eyebrow">GETTING STARTED</span>
+            <h1>Overview</h1>
+            <p class="wiki-lead">A launcher that can grow into a desktop activity panel.</p>
+            <p>Lumen is a Linux application launcher and usage tracker written in C++. It discovers desktop applications, displays their names and icons, supports searching, and can launch applications.</p>
+            <h2>Implemented</h2>
+            <ul>
+                <li>Discovering Linux <code>.desktop</code> files.</li>
+                <li>Reading application names, executable commands (<code>Exec=</code>) and icons (<code>Icon=</code>).</li>
+                <li>Keeping discovered applications in memory and displaying them.</li>
+                <li>Searching applications by name and organizing them into categories.</li>
+                <li>Graphical interface with application icons.</li>
+                <li>Application usage time tracking.</li>
+                <li>CLI commands for listing, searching and opening applications.</li>
+            </ul>
+            <h2>Technology and learning goals</h2>
+            <p>The project is written in C++ and uses GTKmm for its graphical interface. It is also a practical way to learn Linux filesystem APIs, process management, the <code>.desktop</code> specification, inter-process communication (IPC) and databases.</p>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">НАЧАЛО РАБОТЫ</span>
+            <h1>Обзор</h1>
+            <p class="wiki-lead">Лаунчер, который может стать полноценной панелью активности рабочего стола.</p>
+            <p>Lumen — лаунчер приложений и трекер времени их использования для Linux, написанный на C++. Он находит приложения, отображает их названия и иконки, позволяет искать и запускать программы.</p>
+            <h2>Уже реализовано</h2>
+            <ul>
+                <li>Поиск Linux-файлов <code>.desktop</code>.</li>
+                <li>Чтение названий приложений, команд запуска (<code>Exec=</code>) и иконок (<code>Icon=</code>).</li>
+                <li>Хранение найденных приложений в памяти и их отображение.</li>
+                <li>Поиск приложений по названию и распределение по категориям.</li>
+                <li>Графический интерфейс с иконками приложений.</li>
+                <li>Отслеживание времени использования приложений.</li>
+                <li>Команды CLI для просмотра, поиска и запуска приложений.</li>
+            </ul>
+            <h2>Технологии и цели обучения</h2>
+            <p>Проект написан на C++ и использует GTKmm для графического интерфейса. Он также позволяет изучать файловые API Linux, управление процессами, спецификацию <code>.desktop</code>, межпроцессное взаимодействие (IPC) и базы данных.</p>
+        `
+    },
 
-            installation: {
-                title: "Installation",
-                html: `
-                    <span class="wiki-eyebrow">GETTING STARTED</span>
-                    <h1>Installation</h1>
-                    <p class="wiki-lead">Build and install Lumen using the Bash installer.</p>
-                    <p>On Arch Linux, run these commands from the root directory of the cloned repository.</p>
-                    <h2>1. Clone the repository</h2>
-                    <pre><code>git clone https://github.com/anq3l1/lumen.git
+    installation: {
+        title: "Installation",
+        ruTitle: "Установка",
+        html: `
+            <span class="wiki-eyebrow">GETTING STARTED</span>
+            <h1>Installation</h1>
+            <p class="wiki-lead">Build and install Lumen using the Bash installer.</p>
+            <p>On Arch Linux, run these commands from the root directory of the cloned repository.</p>
+            <h2>1. Clone the repository</h2>
+            <pre><code>git clone https://github.com/anq3l1/lumen.git
 cd lumen</code></pre>
-                    <h2>2. Run the installer</h2>
-                    <pre><code>chmod +x install.sh
+            <h2>2. Run the installer</h2>
+            <pre><code>chmod +x install.sh
 ./install.sh</code></pre>
-                    <p>The installer installs dependencies, builds the project and installs the executable to <code>~/.local/bin/lumen</code>.</p>
-                    <div class="wiki-callout">
-                        <span class="callout-icon">i</span>
-                        <div><strong>Before running Lumen</strong><p>Make sure <code>~/.local/bin</code> is available in your <code>PATH</code> so you can run <code>lumen</code> from a terminal.</p></div>
-                    </div>
-                    <h2>Launch the graphical interface</h2>
-                    <pre><code>lumen</code></pre>
-                    <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">View repository ↗</a>
-                `
-            },
+            <p>The installer installs dependencies, builds the project and installs the executable to <code>~/.local/bin/lumen</code>.</p>
+            <div class="wiki-callout"><span class="callout-icon">i</span><div><strong>Before running Lumen</strong><p>Make sure <code>~/.local/bin</code> is available in your <code>PATH</code> so you can run <code>lumen</code> from a terminal.</p></div></div>
+            <h2>Launch the graphical interface</h2>
+            <pre><code>lumen</code></pre>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">НАЧАЛО РАБОТЫ</span>
+            <h1>Установка</h1>
+            <p class="wiki-lead">Собери и установи Lumen с помощью Bash-установщика.</p>
+            <p>В Arch Linux выполни эти команды из корневой директории клонированного репозитория.</p>
+            <h2>1. Клонирование репозитория</h2>
+            <pre><code>git clone https://github.com/anq3l1/lumen.git
+cd lumen</code></pre>
+            <h2>2. Запуск установщика</h2>
+            <pre><code>chmod +x install.sh
+./install.sh</code></pre>
+            <p>Установщик устанавливает зависимости, собирает проект и помещает исполняемый файл в <code>~/.local/bin/lumen</code>.</p>
+            <div class="wiki-callout"><span class="callout-icon">i</span><div><strong>Перед запуском Lumen</strong><p>Убедись, что <code>~/.local/bin</code> находится в переменной <code>PATH</code>. Тогда можно будет запускать <code>lumen</code> из терминала.</p></div></div>
+            <h2>Запуск графического интерфейса</h2>
+            <pre><code>lumen</code></pre>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">Открыть репозиторий ↗</a>
+        `
+    },
 
-            building: {
-                title: "Building from source",
-                html: `
-                    <span class="wiki-eyebrow">GETTING STARTED</span>
-                    <h1>Building from source</h1>
-                    <p class="wiki-lead">Use the project's installation script to build the current version.</p>
-                    <p>Lumen is in an early stage of development. The supported installation workflow described in the README uses the Bash script in the repository.</p>
-                    <h2>Commands</h2>
-                    <pre><code>git clone https://github.com/anq3l1/lumen.git
+    building: {
+        title: "Building from source",
+        ruTitle: "Сборка из исходного кода",
+        html: `
+            <span class="wiki-eyebrow">GETTING STARTED</span>
+            <h1>Building from source</h1>
+            <p class="wiki-lead">Use the project's installation script to build the current version.</p>
+            <p>Lumen is in an early stage of development. The supported installation workflow described in the README uses the Bash script in the repository.</p>
+            <h2>Commands</h2>
+            <pre><code>git clone https://github.com/anq3l1/lumen.git
 cd lumen
 chmod +x install.sh
 ./install.sh</code></pre>
-                    <p>The installer handles dependency installation, building and installation of the executable to <code>~/.local/bin/lumen</code>.</p>
-                    <p>For the latest requirements and build changes, check the repository README and build files.</p>
-                    <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
-                `
-            },
+            <p>The installer handles dependency installation, building and installation of the executable to <code>~/.local/bin/lumen</code>.</p>
+            <p>For the latest requirements and build changes, check the repository README and build files.</p>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">НАЧАЛО РАБОТЫ</span>
+            <h1>Сборка из исходного кода</h1>
+            <p class="wiki-lead">Используй установочный скрипт проекта для сборки текущей версии.</p>
+            <p>Lumen находится на ранней стадии разработки. Поддерживаемый способ установки описан в README и использует Bash-скрипт из репозитория.</p>
+            <h2>Команды</h2>
+            <pre><code>git clone https://github.com/anq3l1/lumen.git
+cd lumen
+chmod +x install.sh
+./install.sh</code></pre>
+            <p>Установщик устанавливает зависимости, собирает проект и помещает исполняемый файл в <code>~/.local/bin/lumen</code>.</p>
+            <p>Актуальные требования и изменения процесса сборки смотри в README и файлах сборки репозитория.</p>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">Исходный код на GitHub ↗</a>
+        `
+    },
 
-            configuration: {
-                title: "General settings",
-                html: `
-                    <span class="wiki-eyebrow">CONFIGURATION</span>
-                    <h1>Configuration</h1>
-                    <p class="wiki-lead">Find Lumen's local data and customization files.</p>
-                    <h2>Important paths</h2>
-                    <ul>
-                        <li><code>~/.local/bin/lumen</code> — installed executable.</li>
-                        <li><code>~/.local/share/lumen/proc.json</code> — process manager data.</li>
-                        <li><code>~/.local/share/lumen/stat.json</code> — usage tracker data.</li>
-                        <li><code>~/.config/lumen/style.css</code> — user stylesheet for customizing the interface.</li>
-                        <li><code>~/.config/hypr/lua/lumen.lua</code> — Lumen's Hyprland Lua integration file.</li>
-                    </ul>
-                    <div class="wiki-callout">
-                        <span class="callout-icon">i</span>
-                        <div><strong>Keep configuration files separate</strong><p>Lumen's <code>style.css</code> is for visual customization. The Lua file is used for Hyprland integration.</p></div>
-                    </div>
-                `
-            },
+    configuration: {
+        title: "General settings",
+        ruTitle: "Общие настройки",
+        html: `
+            <span class="wiki-eyebrow">CONFIGURATION</span>
+            <h1>Configuration</h1>
+            <p class="wiki-lead">Find Lumen's local data and customization files.</p>
+            <h2>Important paths</h2>
+            <ul>
+                <li><code>~/.local/bin/lumen</code> — installed executable.</li>
+                <li><code>~/.local/share/lumen/proc.json</code> — process manager data.</li>
+                <li><code>~/.local/share/lumen/stat.json</code> — usage tracker data.</li>
+                <li><code>~/.config/lumen/style.css</code> — user stylesheet for customizing the interface.</li>
+                <li><code>~/.config/hypr/lua/lumen.lua</code> — Lumen's Hyprland Lua integration file.</li>
+            </ul>
+            <div class="wiki-callout"><span class="callout-icon">i</span><div><strong>Keep configuration files separate</strong><p>Lumen's <code>style.css</code> is for visual customization. The Lua file is used for Hyprland integration.</p></div></div>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">НАСТРОЙКИ</span>
+            <h1>Конфигурация</h1>
+            <p class="wiki-lead">Расположение локальных данных и файлов настройки Lumen.</p>
+            <h2>Важные пути</h2>
+            <ul>
+                <li><code>~/.local/bin/lumen</code> — установленный исполняемый файл.</li>
+                <li><code>~/.local/share/lumen/proc.json</code> — данные менеджера процессов.</li>
+                <li><code>~/.local/share/lumen/stat.json</code> — данные отслеживания использования.</li>
+                <li><code>~/.config/lumen/style.css</code> — пользовательская таблица стилей интерфейса.</li>
+                <li><code>~/.config/hypr/lua/lumen.lua</code> — файл интеграции Lumen с Hyprland через Lua.</li>
+            </ul>
+            <div class="wiki-callout"><span class="callout-icon">i</span><div><strong>Не смешивай конфигурационные файлы</strong><p>Файл <code>style.css</code> отвечает за оформление, а Lua-файл используется для интеграции с Hyprland.</p></div></div>
+        `
+    },
 
-            styling: {
-                title: "Custom styling",
-                html: `
-                    <span class="wiki-eyebrow">CONFIGURATION</span>
-                    <h1>Custom styling</h1>
-                    <p class="wiki-lead">Customize Lumen's appearance with CSS.</p>
-                    <p>The user stylesheet is located at:</p>
-                    <pre><code>~/.config/lumen/style.css</code></pre>
-                    <p>Edit this file to customize supported GTK widgets, including their colors, backgrounds, borders and spacing.</p>
-                    <h2>Example</h2>
-                    <pre><code>/* Example GTK CSS */
+    styling: {
+        title: "Custom styling",
+        ruTitle: "Настройка оформления",
+        html: `
+            <span class="wiki-eyebrow">CONFIGURATION</span>
+            <h1>Custom styling</h1>
+            <p class="wiki-lead">Customize Lumen's appearance with CSS.</p>
+            <p>The user stylesheet is located at:</p>
+            <pre><code>~/.config/lumen/style.css</code></pre>
+            <p>Edit this file to customize supported GTK widgets, including their colors, backgrounds, borders and spacing.</p>
+            <h2>Example</h2>
+            <pre><code>/* Example GTK CSS */
 window {
     background-color: #0d1729;
     color: #eff6ff;
 }</code></pre>
-                    <p>This is a generic example. The final appearance depends on the widget names and styles used by the installed Lumen version.</p>
-                `
-            },
+            <p>This is a generic example. The final appearance depends on the widget names and styles used by the installed Lumen version.</p>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">НАСТРОЙКИ</span>
+            <h1>Настройка оформления</h1>
+            <p class="wiki-lead">Настрой внешний вид Lumen с помощью CSS.</p>
+            <p>Пользовательская таблица стилей находится здесь:</p>
+            <pre><code>~/.config/lumen/style.css</code></pre>
+            <p>Редактируй этот файл, чтобы менять цвета, фон, границы и отступы поддерживаемых виджетов GTK.</p>
+            <h2>Пример</h2>
+            <pre><code>/* Пример GTK CSS */
+window {
+    background-color: #0d1729;
+    color: #eff6ff;
+}</code></pre>
+            <p>Это общий пример. Итоговый вид зависит от названий виджетов и стилей, используемых установленной версией Lumen.</p>
+        `
+    },
 
-            desktop: {
-                title: "Desktop integration",
-                html: `
-                    <span class="wiki-eyebrow">CONFIGURATION</span>
-                    <h1>Desktop integration</h1>
-                    <p class="wiki-lead">Connect Lumen to Hyprland.</p>
-                    <h2>Hyprland Lua configuration</h2>
-                    <p>The installer places the integration file at:</p>
-                    <pre><code>~/.config/hypr/lua/lumen.lua</code></pre>
-                    <p>If <code>~/.config/hypr/hyprland.lua</code> exists, the installer adds a command to load this file. If you use a different Lua entry point, add the following line after initializing <code>hl</code>:</p>
-                    <pre><code>dofile(os.getenv("HOME") .. "/.config/hypr/lua/lumen.lua")</code></pre>
-                    <h2>Process manager</h2>
-                    <p>The process manager starts on the <code>hyprland.start</code> event using the <code>lumen --processmanager</code> command.</p>
-                    <p>Hyprland integration and Lumen's CSS styling use separate files: <code>lumen.lua</code> configures the integration, while <code>~/.config/lumen/style.css</code> customizes the interface.</p>
-                `
-            },
+    desktop: {
+        title: "Desktop integration",
+        ruTitle: "Интеграция с рабочим столом",
+        html: `
+            <span class="wiki-eyebrow">CONFIGURATION</span>
+            <h1>Desktop integration</h1>
+            <p class="wiki-lead">Connect Lumen to Hyprland.</p>
+            <h2>Hyprland Lua configuration</h2>
+            <p>The installer places the integration file at:</p>
+            <pre><code>~/.config/hypr/lua/lumen.lua</code></pre>
+            <p>If <code>~/.config/hypr/hyprland.lua</code> exists, the installer adds a command to load this file. If you use a different Lua entry point, add the following line after initializing <code>hl</code>:</p>
+            <pre><code>dofile(os.getenv("HOME") .. "/.config/hypr/lua/lumen.lua")</code></pre>
+            <h2>Process manager</h2>
+            <p>The process manager starts on the <code>hyprland.start</code> event using the <code>lumen --processmanager</code> command.</p>
+            <p>Hyprland integration and Lumen's CSS styling use separate files: <code>lumen.lua</code> configures the integration, while <code>~/.config/lumen/style.css</code> customizes the interface.</p>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">НАСТРОЙКИ</span>
+            <h1>Интеграция с рабочим столом</h1>
+            <p class="wiki-lead">Подключи Lumen к Hyprland.</p>
+            <h2>Конфигурация Hyprland на Lua</h2>
+            <p>Установщик размещает файл интеграции здесь:</p>
+            <pre><code>~/.config/hypr/lua/lumen.lua</code></pre>
+            <p>Если существует файл <code>~/.config/hypr/hyprland.lua</code>, установщик добавляет команду для загрузки интеграции. Если ты используешь другую точку входа Lua, добавь следующую строку после инициализации <code>hl</code>:</p>
+            <pre><code>dofile(os.getenv("HOME") .. "/.config/hypr/lua/lumen.lua")</code></pre>
+            <h2>Менеджер процессов</h2>
+            <p>Менеджер процессов запускается при событии <code>hyprland.start</code> с помощью команды <code>lumen --processmanager</code>.</p>
+            <p>Интеграция с Hyprland и CSS-оформление Lumen используют разные файлы: <code>lumen.lua</code> отвечает за интеграцию, а <code>~/.config/lumen/style.css</code> — за внешний вид интерфейса.</p>
+        `
+    },
 
-            features: {
-                title: "Features",
-                html: `
-                    <span class="wiki-eyebrow">FEATURES</span>
-                    <h1>Features</h1>
-                    <p class="wiki-lead">Implemented today, with more planned for the future.</p>
-                    <h2>Implemented</h2>
-                    <ul>
-                        <li>Discover Linux <code>.desktop</code> files.</li>
-                        <li>Read application names, executable commands and icons.</li>
-                        <li>Store and display discovered applications.</li>
-                        <li>Search applications by name.</li>
-                        <li>Application categories and graphical interface.</li>
-                        <li>Launch applications.</li>
-                        <li>Track application usage time.</li>
-                    </ul>
-                    <h2>Planned</h2>
-                    <ul>
-                        <li>Added music player on start window.</li>
-                        <li>Keyboard navigation.</li>
-                        <li>Session tracking and a current-session timer.</li>
-                        <li>SQLite database.</li>
-                        <li>Daily, weekly statistics.</li>
-                        <li>Usage charts.</li>
-                        <li>Hyprland integration improvements and a customizable panel.</li>
-                        <li>Counter laucnh applications.</li>
-                        <li>Themes, more customization for style css and a configuration file.</li>
-                        <li>Background/wallpaper support, clock and system widgets.</li>
-                    </ul>
-                    <div class="wiki-callout"><span class="callout-icon">⚠</span><div><strong>Development status</strong><p>Items in the planned list are goals, not promises that those features are available in the current release.</p></div></div>
-                `
-            },
+    features: {
+        title: "Features",
+        ruTitle: "Возможности",
+        html: `
+            <span class="wiki-eyebrow">FEATURES</span>
+            <h1>Features</h1>
+            <p class="wiki-lead">Implemented today, with more planned for the future.</p>
+            <h2>Implemented</h2>
+            <ul>
+                <li>Discover Linux <code>.desktop</code> files.</li>
+                <li>Read application names, executable commands and icons.</li>
+                <li>Store and display discovered applications.</li>
+                <li>Search applications by name.</li>
+                <li>Application categories and graphical interface.</li>
+                <li>Launch applications.</li>
+                <li>Track application usage time.</li>
+            </ul>
+            <h2>Planned</h2>
+            <ul>
+                <li>Added music player on start window.</li>
+                <li>Keyboard navigation.</li>
+                <li>Session tracking and a current-session timer.</li>
+                <li>SQLite database.</li>
+                <li>Daily, weekly statistics.</li>
+                <li>Usage charts.</li>
+                <li>Hyprland integration improvements and a customizable panel.</li>
+                <li>Counter laucnh applications.</li>
+                <li>Themes, more customization for style css and a configuration file.</li>
+                <li>Background/wallpaper support, clock and system widgets.</li>
+            </ul>
+            <div class="wiki-callout"><span class="callout-icon">⚠</span><div><strong>Development status</strong><p>Items in the planned list are goals, not promises that those features are available in the current release.</p></div></div>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">ВОЗМОЖНОСТИ</span>
+            <h1>Возможности</h1>
+            <p class="wiki-lead">Что уже реализовано и что планируется добавить в будущем.</p>
+            <h2>Реализовано</h2>
+            <ul>
+                <li>Поиск Linux-файлов <code>.desktop</code>.</li>
+                <li>Чтение названий приложений, команд запуска и иконок.</li>
+                <li>Сохранение и отображение найденных приложений.</li>
+                <li>Поиск приложений по названию.</li>
+                <li>Категории приложений и графический интерфейс.</li>
+                <li>Запуск приложений.</li>
+                <li>Отслеживание времени использования приложений.</li>
+            </ul>
+            <h2>Планируется</h2>
+            <ul>
+                <li>Музыкальный плеер в стартовом окне.</li>
+                <li>Управление с клавиатуры.</li>
+                <li>Отслеживание сеансов и таймер текущего сеанса.</li>
+                <li>База данных SQLite.</li>
+                <li>Ежедневная и еженедельная статистика.</li>
+                <li>Графики использования.</li>
+                <li>Улучшение интеграции с Hyprland и настраиваемая панель.</li>
+                <li>Счётчик запусков приложений.</li>
+                <li>Темы оформления, расширенная настройка CSS и конфигурационный файл.</li>
+                <li>Поддержка фоновых изображений, обои, часы и системные виджеты.</li>
+            </ul>
+            <div class="wiki-callout"><span class="callout-icon">⚠</span><div><strong>Статус разработки</strong><p>Запланированные функции — это цели развития, а не обещание, что они уже доступны в текущей версии.</p></div></div>
+        `
+    },
 
-            launcher: {
-                title: "Application launcher",
-                html: `
-                    <span class="wiki-eyebrow">FEATURES</span>
-                    <h1>Application launcher</h1>
-                    <p class="wiki-lead">Discover, search for and launch desktop applications.</p>
-                    <p>Lumen reads Linux <code>.desktop</code> entries to retrieve application names, executable commands (<code>Exec=</code>) and icons (<code>Icon=</code>).</p>
-                    <h2>Available ways to use the launcher</h2>
-                    <ul>
-                        <li>Open the graphical interface with <code>lumen</code>.</li>
-                        <li>List discovered applications with <code>lumen --list</code>.</li>
-                        <li>Search for an application with <code>lumen --search firefox</code>.</li>
-                        <li>Launch an application by name with <code>lumen --open kitty</code>.</li>
-                    </ul>
-                    <p>The application list contains one entry per displayed application name. Applications with identical names from user and system <code>.desktop</code> files are not duplicated.</p>
-                `
-            },
+    launcher: {
+        title: "Application launcher",
+        ruTitle: "Лаунчер приложений",
+        html: `
+            <span class="wiki-eyebrow">FEATURES</span>
+            <h1>Application launcher</h1>
+            <p class="wiki-lead">Discover, search for and launch desktop applications.</p>
+            <p>Lumen reads Linux <code>.desktop</code> entries to retrieve application names, executable commands (<code>Exec=</code>) and icons (<code>Icon=</code>).</p>
+            <h2>Available ways to use the launcher</h2>
+            <ul>
+                <li>Open the graphical interface with <code>lumen</code>.</li>
+                <li>List discovered applications with <code>lumen --list</code>.</li>
+                <li>Search for an application with <code>lumen --search firefox</code>.</li>
+                <li>Launch an application by name with <code>lumen --open kitty</code>.</li>
+            </ul>
+            <p>The application list contains one entry per displayed application name. Applications with identical names from user and system <code>.desktop</code> files are not duplicated.</p>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">ВОЗМОЖНОСТИ</span>
+            <h1>Лаунчер приложений</h1>
+            <p class="wiki-lead">Поиск, просмотр и запуск приложений рабочего стола.</p>
+            <p>Lumen читает файлы <code>.desktop</code> в Linux, чтобы получить названия приложений, команды запуска (<code>Exec=</code>) и иконки (<code>Icon=</code>).</p>
+            <h2>Как пользоваться лаунчером</h2>
+            <ul>
+                <li>Открыть графический интерфейс командой <code>lumen</code>.</li>
+                <li>Показать найденные приложения командой <code>lumen --list</code>.</li>
+                <li>Найти приложение командой <code>lumen --search firefox</code>.</li>
+                <li>Запустить приложение по имени командой <code>lumen --open kitty</code>.</li>
+            </ul>
+            <p>В списке приложений отображается одна запись на каждое название. Приложения с одинаковыми именами из пользовательских и системных файлов <code>.desktop</code> не дублируются.</p>
+        `
+    },
 
-            usage: {
-                title: "Usage tracking",
-                html: `
-                    <span class="wiki-eyebrow">FEATURES</span>
-                    <h1>Usage tracking</h1>
-                    <p class="wiki-lead">Track how long applications are used.</p>
-                    <p>Application usage time tracking is implemented in Lumen. Tracker data is stored locally in:</p>
-                    <pre><code>~/.local/share/lumen/proc.json
+    usage: {
+        title: "Usage tracking",
+        ruTitle: "Отслеживание использования",
+        html: `
+            <span class="wiki-eyebrow">FEATURES</span>
+            <h1>Usage tracking</h1>
+            <p class="wiki-lead">Track how long applications are used.</p>
+            <p>Application usage time tracking is implemented in Lumen. Tracker data is stored locally in:</p>
+            <pre><code>~/.local/share/lumen/proc.json
 ~/.local/share/lumen/stat.json</code></pre>
-                    <h2>Planned improvements</h2>
-                    <p>Session tracking, a current-session timer, a SQLite database and daily, weekly and monthly statistics are planned for future development.</p>
-                `
-            },
+            <h2>Planned improvements</h2>
+            <p>Session tracking, a current-session timer, a SQLite database and daily, weekly and monthly statistics are planned for future development.</p>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">ВОЗМОЖНОСТИ</span>
+            <h1>Отслеживание использования</h1>
+            <p class="wiki-lead">Отслеживай, сколько времени используются приложения.</p>
+            <p>Отслеживание времени использования приложений уже реализовано в Lumen. Данные сохраняются локально в файлах:</p>
+            <pre><code>~/.local/share/lumen/proc.json
+~/.local/share/lumen/stat.json</code></pre>
+            <h2>Планируемые улучшения</h2>
+            <p>В будущем планируется добавить отслеживание сеансов, таймер текущего сеанса, базу данных SQLite, а также ежедневную, еженедельную и ежемесячную статистику.</p>
+        `
+    },
 
-            statistics: {
-                title: "Statistics",
-                html: `
-                    <span class="wiki-eyebrow">FEATURES</span>
-                    <h1>Statistics</h1>
-                    <p class="wiki-lead">A planned area of Lumen's development.</p>
-                    <p>Application usage time tracking is implemented, and its data is stored locally in the Lumen data directory.</p>
-                    <h2>Planned statistics features</h2>
-                    <ul>
-                        <li>Session tracking.</li>
-                        <li>Daily, weekly and monthly statistics.</li>
-                        <li>Usage charts.</li>
-                        <li>A current-session timer.</li>
-                        <li>SQLite database storage.</li>
-                    </ul>
-                    <div class="wiki-callout"><span class="callout-icon">i</span><div><strong>Not all features are available yet</strong><p>The items above are listed as planned in the project README.</p></div></div>
-                `
-            },
+    statistics: {
+        title: "Statistics",
+        ruTitle: "Статистика",
+        html: `
+            <span class="wiki-eyebrow">FEATURES</span>
+            <h1>Statistics</h1>
+            <p class="wiki-lead">A planned area of Lumen's development.</p>
+            <p>Application usage time tracking is implemented, and its data is stored locally in the Lumen data directory.</p>
+            <h2>Planned statistics features</h2>
+            <ul>
+                <li>Session tracking.</li>
+                <li>Daily, weekly and monthly statistics.</li>
+                <li>Usage charts.</li>
+                <li>A current-session timer.</li>
+                <li>SQLite database storage.</li>
+            </ul>
+            <div class="wiki-callout"><span class="callout-icon">i</span><div><strong>Not all features are available yet</strong><p>The items above are listed as planned in the project README.</p></div></div>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">ВОЗМОЖНОСТИ</span>
+            <h1>Статистика</h1>
+            <p class="wiki-lead">Одно из направлений дальнейшего развития Lumen.</p>
+            <p>Отслеживание времени использования приложений уже реализовано. Данные хранятся локально в директории данных Lumen.</p>
+            <h2>Что планируется добавить</h2>
+            <ul>
+                <li>Отслеживание сеансов.</li>
+                <li>Ежедневную, еженедельную и ежемесячную статистику.</li>
+                <li>Графики использования.</li>
+                <li>Таймер текущего сеанса.</li>
+                <li>Хранение данных в SQLite.</li>
+            </ul>
+            <div class="wiki-callout"><span class="callout-icon">i</span><div><strong>Пока доступны не все функции</strong><p>Перечисленные выше возможности обозначены как планы в README проекта.</p></div></div>
+        `
+    },
 
-            troubleshooting: {
-                title: "Troubleshooting",
-                html: `
-                    <span class="wiki-eyebrow">HELP</span>
-                    <h1>Troubleshooting</h1>
-                    <p class="wiki-lead">Check these steps when Lumen does not work as expected.</p>
-                    <h2>Installer does not run</h2>
-                    <p>From the repository root, make the script executable and run it:</p>
-                    <pre><code>chmod +x install.sh
+    troubleshooting: {
+        title: "Troubleshooting",
+        ruTitle: "Решение проблем",
+        html: `
+            <span class="wiki-eyebrow">HELP</span>
+            <h1>Troubleshooting</h1>
+            <p class="wiki-lead">Check these steps when Lumen does not work as expected.</p>
+            <h2>Installer does not run</h2>
+            <p>From the repository root, make the script executable and run it:</p>
+            <pre><code>chmod +x install.sh
 ./install.sh</code></pre>
-                    <h2>Command not found</h2>
-                    <p>The installer places the executable at <code>~/.local/bin/lumen</code>. Check that <code>~/.local/bin</code> is included in your shell's <code>PATH</code>.</p>
-                    <h2>Applications are missing</h2>
-                    <p>Check that the applications have valid Linux <code>.desktop</code> entries available to your desktop environment.</p>
-                    <h2>CLI commands</h2>
-                    <pre><code>lumen --list
+            <h2>Command not found</h2>
+            <p>The installer places the executable at <code>~/.local/bin/lumen</code>. Check that <code>~/.local/bin</code> is included in your shell's <code>PATH</code>.</p>
+            <h2>Applications are missing</h2>
+            <p>Check that the applications have valid Linux <code>.desktop</code> entries available to your desktop environment.</p>
+            <h2>CLI commands</h2>
+            <pre><code>lumen --list
 lumen --search firefox
 lumen --open kitty
 lumen --processmanager</code></pre>
-                    <p>If the problem persists, review terminal output and open an issue with steps to reproduce the problem.</p>
-                    <a class="wiki-action" href="https://github.com/anq3l1/lumen/issues" target="_blank" rel="noopener noreferrer">Report an issue ↗</a>
-                `
-            },
+            <p>If the problem persists, review terminal output and open an issue with steps to reproduce the problem.</p>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen/issues" target="_blank" rel="noopener noreferrer">Report an issue ↗</a>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">ПОМОЩЬ</span>
+            <h1>Решение проблем</h1>
+            <p class="wiki-lead">Что проверить, если Lumen работает не так, как ожидалось.</p>
+            <h2>Установщик не запускается</h2>
+            <p>В корневой директории репозитория сделай скрипт исполняемым и запусти его:</p>
+            <pre><code>chmod +x install.sh
+./install.sh</code></pre>
+            <h2>Команда не найдена</h2>
+            <p>Установщик размещает исполняемый файл по пути <code>~/.local/bin/lumen</code>. Убедись, что <code>~/.local/bin</code> добавлена в переменную <code>PATH</code>.</p>
+            <h2>Не отображаются приложения</h2>
+            <p>Проверь, что приложения имеют корректные Linux-файлы <code>.desktop</code>, доступные твоему рабочему окружению.</p>
+            <h2>Команды CLI</h2>
+            <pre><code>lumen --list
+lumen --search firefox
+lumen --open kitty
+lumen --processmanager</code></pre>
+            <p>Если проблема сохраняется, изучи вывод терминала и создай issue, описав шаги для воспроизведения ошибки.</p>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen/issues" target="_blank" rel="noopener noreferrer">Сообщить об ошибке ↗</a>
+        `
+    },
 
-            contributing: {
-                title: "Contributing",
-                html: `
-                    <span class="wiki-eyebrow">COMMUNITY</span>
-                    <h1>Contributing</h1>
-                    <p class="wiki-lead">Help improve Lumen.</p>
-                    <p>Lumen began as a learning project focused on building a real-world Linux desktop application. Bug reports, ideas and contributions can help it develop further.</p>
-                    <h2>Areas explored by the project</h2>
-                    <ul>
-                        <li>Linux filesystem APIs.</li>
-                        <li>Process management.</li>
-                        <li>The <code>.desktop</code> specification.</li>
-                        <li>Inter-process communication (IPC).</li>
-                        <li>Databases and usage statistics.</li>
-                    </ul>
-                    <p>Before contributing, read the README and check existing issues.</p>
-                    <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a>
-                `
-            },
+    contributing: {
+        title: "Contributing",
+        ruTitle: "Участие в разработке",
+        html: `
+            <span class="wiki-eyebrow">COMMUNITY</span>
+            <h1>Contributing</h1>
+            <p class="wiki-lead">Help improve Lumen.</p>
+            <p>Lumen began as a learning project focused on building a real-world Linux desktop application. Bug reports, ideas and contributions can help it develop further.</p>
+            <h2>Areas explored by the project</h2>
+            <ul>
+                <li>Linux filesystem APIs.</li>
+                <li>Process management.</li>
+                <li>The <code>.desktop</code> specification.</li>
+                <li>Inter-process communication (IPC).</li>
+                <li>Databases and usage statistics.</li>
+            </ul>
+            <p>Before contributing, read the README and check existing issues.</p>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">СООБЩЕСТВО</span>
+            <h1>Участие в разработке</h1>
+            <p class="wiki-lead">Помоги сделать Lumen лучше.</p>
+            <p>Lumen начинался как учебный проект по созданию настоящего приложения для рабочего стола Linux. Сообщения об ошибках, идеи и вклад сообщества помогут развивать проект.</p>
+            <h2>Направления проекта</h2>
+            <ul>
+                <li>Файловые API Linux.</li>
+                <li>Управление процессами.</li>
+                <li>Спецификация <code>.desktop</code>.</li>
+                <li>Межпроцессное взаимодействие (IPC).</li>
+                <li>Базы данных и статистика использования.</li>
+            </ul>
+            <p>Перед участием в разработке прочитай README и проверь существующие issues.</p>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">Открыть GitHub ↗</a>
+        `
+    },
 
-            license: {
-                title: "License",
-                html: `
-                    <span class="wiki-eyebrow">PROJECT</span>
-                    <h1>License</h1>
-                    <p class="wiki-lead">Check the license provided with the source code.</p>
-                    <p>The README describes Lumen as an open-source project but does not specify the license name. Check the <code>LICENSE</code> file in the repository for the applicable terms.</p>
-                    <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">View repository ↗</a>
-                `
-            }
-        };
+    license: {
+        title: "License",
+        ruTitle: "Лицензия",
+        html: `
+            <span class="wiki-eyebrow">PROJECT</span>
+            <h1>License</h1>
+            <p class="wiki-lead">Check the license provided with the source code.</p>
+            <p>The README describes Lumen as an open-source project but does not specify the license name. Check the <code>LICENSE</code> file in the repository for the applicable terms.</p>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+        `,
+        ru: `
+            <span class="wiki-eyebrow">ПРОЕКТ</span>
+            <h1>Лицензия</h1>
+            <p class="wiki-lead">Проверь лицензию, прилагаемую к исходному коду.</p>
+            <p>В README Lumen описан как проект с открытым исходным кодом, но название лицензии не указано. Условия использования можно проверить в файле <code>LICENSE</code> в репозитории.</p>
+            <a class="wiki-action" href="https://github.com/anq3l1/lumen" target="_blank" rel="noopener noreferrer">Открыть репозиторий ↗</a>
+        `
+    }
+};
 
-        const article = document.getElementById("wiki-article");
-        const breadcrumb = document.getElementById("breadcrumb-current");
-        const content = document.getElementById("wiki-content");
+const languageSwitcher = document.getElementById("language-switcher");
+const article = document.getElementById("wiki-article");
+const breadcrumb = document.getElementById("breadcrumb-current");
 
-        function showPage(pageId) {
-            const page = pages[pageId];
+const navTranslations = {
+    introduction: "Введение",
+    overview: "Обзор",
+    installation: "Установка",
+    building: "Сборка из исходного кода",
+    configuration: "Общие настройки",
+    styling: "Настройка оформления",
+    desktop: "Интеграция с рабочим столом",
+    launcher: "Лаунчер приложений",
+    usage: "Отслеживание использования",
+    statistics: "Статистика",
+    troubleshooting: "Решение проблем",
+    contributing: "Участие в разработке",
+    license: "Лицензия"
+};
 
-            if (!page) return;
+const staticTranslations = {
+    "DOCUMENTATION": "ДОКУМЕНТАЦИЯ",
+    "LUMEN DOCUMENTATION": "ДОКУМЕНТАЦИЯ LUMEN",
+    "Documentation": "Документация",
+    "Getting Started": "Начало работы",
+    "Configuration": "Настройки",
+    "Features": "Возможности",
+    "Help": "Помощь",
+    "Open source · Community driven": "Открытый код · Развивается сообществом",
+    "Select language": "Выбрать язык",
+    "© 2026 Lumen · Open Source Software": "© 2026 Lumen · Программное обеспечение с открытым кодом"
+};
 
-            article.innerHTML = page.html;
-            breadcrumb.textContent = page.title;
-            document.title = page.title + " · Lumen Wiki";
+let currentPageId = "introduction";
 
-            document.querySelectorAll(".wiki-nav-link").forEach(link => {
-                link.classList.toggle("active", link.dataset.page === pageId);
-            });
+function getLanguage() {
+    return languageSwitcher?.value || "en";
+}
 
-            // Open the sidebar group containing the selected page.
-            const selectedLink = document.querySelector(
-                `.wiki-sidebar [data-page="${pageId}"]`
-            );
+function translateStaticInterface(language) {
+    document.documentElement.lang = language;
 
-            if (selectedLink) {
-                const group = selectedLink.closest("details");
+    const badge = document.querySelector(".wiki-badge");
+    if (badge) {
+        badge.textContent = language === "ru"
+            ? "ДОКУМЕНТАЦИЯ"
+            : "DOCUMENTATION";
+    }
 
-                if (group) group.open = true;
-            }
+    const sidebarHeading = document.querySelector(".sidebar-heading");
+    if (sidebarHeading) {
+        sidebarHeading.textContent = language === "ru"
+            ? "ДОКУМЕНТАЦИЯ"
+            : "DOCUMENTATION";
+    }
 
-            content.scrollTo({ top: 0, behavior: "smooth" });
+    document.querySelectorAll(".wiki-nav-group > summary").forEach((summary, index) => {
+        const englishLabels = ["Getting Started", "Configuration", "Features", "Help"];
+        const russianLabels = ["Начало работы", "Настройки", "Возможности", "Помощь"];
 
-            history.replaceState(null, "", "#" + pageId);
+        summary.textContent = language === "ru"
+            ? russianLabels[index]
+            : englishLabels[index];
+    });
+
+    document.querySelectorAll(".wiki-nav-link[data-page]").forEach(button => {
+        const pageId = button.dataset.page;
+        const page = pages[pageId];
+        if (!page) return;
+
+        const label = language === "ru"
+            ? navTranslations[pageId]
+            : page.title;
+
+        const icon = button.querySelector(".nav-icon");
+
+        if (icon) {
+            button.innerHTML = "";
+            button.appendChild(icon);
+            button.appendChild(document.createTextNode(" " + label));
+        } else {
+            button.textContent = label;
         }
+    });
 
-        document.addEventListener("click", event => {
-            const button = event.target.closest("[data-page]");
-            if (button) showPage(button.dataset.page);
-        });
+    const sidebarBottom = document.querySelector(".sidebar-bottom");
+    if (sidebarBottom) {
+        const statusDot = sidebarBottom.querySelector(".status-dot");
+        sidebarBottom.innerHTML = "";
+        if (statusDot) sidebarBottom.appendChild(statusDot);
+        sidebarBottom.appendChild(document.createTextNode(
+            language === "ru"
+                ? "Открытый код · Развивается сообществом"
+                : "Open source · Community driven"
+        ));
+    }
 
-        // Support direct links such as lumenwiki.html#installation.
-        const initialPage = location.hash.slice(1);
+    const footerText = document.querySelector(".wiki-footer span");
+    if (footerText) {
+        footerText.textContent = language === "ru"
+            ? "© 2026 Lumen · Программное обеспечение с открытым кодом"
+            : "© 2026 Lumen · Open Source Software";
+    }
 
-        if (pages[initialPage]) {
-            showPage(initialPage);
-        }
-    </script>
+    const languageLabel = document.getElementById("language-switcher");
+    if (languageLabel) {
+        languageLabel.setAttribute(
+            "aria-label",
+            language === "ru" ? "Выбрать язык" : "Select language"
+        );
+    }
+
+    const docBreadcrumb = document.querySelector(".wiki-breadcrumb span:first-child");
+    if (docBreadcrumb) {
+        docBreadcrumb.textContent = language === "ru"
+            ? "Документация"
+            : "Documentation";
+    }
+}
+
+function showPage(pageId, updateHash = true) {
+    const page = pages[pageId];
+    if (!page || !article) return;
+
+    currentPageId = pageId;
+    const language = getLanguage();
+
+    article.innerHTML = language === "ru" ? page.ru : page.html;
+
+    if (breadcrumb) {
+        breadcrumb.textContent = language === "ru"
+            ? page.ruTitle
+            : page.title;
+    }
+
+    document.title =
+        (language === "ru" ? page.ruTitle : page.title) + " · Lumen Wiki";
+
+    document.querySelectorAll(".wiki-nav-link").forEach(link => {
+        link.classList.toggle("active", link.dataset.page === pageId);
+    });
+
+    const selectedLink = document.querySelector(
+        `.wiki-sidebar [data-page="${pageId}"]`
+    );
+
+    if (selectedLink) {
+        const group = selectedLink.closest("details");
+        if (group) group.open = true;
+    }
+
+    if (updateHash) {
+        history.replaceState(null, "", "#" + pageId);
+    }
+
+    translateStaticInterface(language);
+
+    const content = document.getElementById("wiki-content");
+    if (content) content.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function translatePage(language) {
+    localStorage.setItem("lumen-language", language);
+    document.documentElement.lang = language;
+    showPage(currentPageId, false);
+}
+
+if (languageSwitcher) {
+    const savedLanguage = localStorage.getItem("lumen-language") || "en";
+    languageSwitcher.value = savedLanguage;
+
+    languageSwitcher.addEventListener("change", () => {
+        translatePage(languageSwitcher.value);
+    });
+}
+
+document.addEventListener("click", event => {
+    const button = event.target.closest("[data-page]");
+    if (!button || !pages[button.dataset.page]) return;
+
+    showPage(button.dataset.page);
+});
+
+const initialPage = location.hash.slice(1);
+const savedLanguage = localStorage.getItem("lumen-language") || "en";
+
+if (languageSwitcher) {
+    languageSwitcher.value = savedLanguage;
+}
+
+showPage(pages[initialPage] ? initialPage : "introduction", false);
+</script>
+
 
 </body>
 </html>

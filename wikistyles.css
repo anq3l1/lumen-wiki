@@ -153,6 +153,51 @@ body.wiki-page {
     padding: 38px clamp(28px, 5vw, 76px) 0;
 }
 
+
+.language-switcher {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding: 7px 28px 7px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #eff6ff;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+    outline: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23eff6ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+
+.language-switcher:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.language-switcher option {
+    background-color: #101722;
+    color: #eff6ff;
+}
+
+@media (max-width: 600px) {
+    .wiki-header-actions {
+        margin-right: 8px;
+    }
+
+    .language-switcher {
+        padding-left: 8px;
+        padding-right: 25px;
+    }
+}
+
+
 .wiki-page #wiki-article {
     width: 100%;
     max-width: 850px;
